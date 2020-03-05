@@ -9,11 +9,20 @@ class Formatter {
 
   static titleize(string){
     let books = string.split(" ")
+    var answer = []
     for ( let i = 0; i < books.length; i++){
-      if (books[i] !== "the" || "a" || "an" || "but" || "of" || "and" || "for" || "at" || "by" || "from"){
-        console.log(books[i].charAt(0).toUpperCase() + books[i].slice(1).toLowerCase())
+      let words = ["the", "a", "an", "but", "of", "and", "for", "at", "by", "from"]
+      if (i === 0){
+        answer.push(books[i].charAt(0).toUpperCase() + books[i].slice(1).toLowerCase())
+      }else{
+        if (words.includes(books[i])){
+          answer.push(books[i])
+        }else{
+          answer.push(books[i].charAt(0).toUpperCase() + books[i].slice(1).toLowerCase())
+        }
       }
     }
+    return answer.join(" ")
   }
 }
 
